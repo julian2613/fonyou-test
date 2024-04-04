@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  database:
+    image: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - /home/docker/postgresql:/var/lib/postgresql/data
+    environment:
+      PGDATA: /var/lib/postgresql/data
+      POSTGRES_DB: test
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+  backend:
+    image: backend
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+    environment:
+      ENVIRONMENT: dev
+      DATABASE_HOST: database

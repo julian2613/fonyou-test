@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    active: ${ENVIRONMENT:local}
+  application:
+    name: test
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    username: postgres
+    url: jdbc:postgresql://${DATABASE_HOST}:5432/test
+    password: password
