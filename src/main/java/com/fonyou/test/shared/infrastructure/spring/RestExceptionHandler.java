@@ -7,6 +7,7 @@ import org.apache.coyote.BadRequestException;
 import org.hibernate.query.sqm.PathElementException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -20,7 +21,7 @@ import org.springframework.web.servlet.resource.NoResourceFoundException;
 public class RestExceptionHandler {
     private final Logger logger = LoggerFactory.getLogger(RestExceptionHandler.class);
 
-    @ExceptionHandler(value = {HttpMessageNotReadableException.class, MethodArgumentNotValidException.class, BadRequestException.class, PathElementException.class, MissingServletRequestParameterException.class})
+    @ExceptionHandler(value = {HttpMessageNotReadableException.class, MethodArgumentNotValidException.class, BadRequestException.class, PathElementException.class, MissingServletRequestParameterException.class, InvalidDataAccessApiUsageException.class})
     private ResponseEntity<ExceptionResponse> handleBadRequest(Exception ex) {
         this.logger.error("--RestExceptionHandler:handleBadRequest" + ex.getMessage());
         return new ResponseEntity<>(new ExceptionResponse(ExceptionCode.INVALID_REQUEST, ExceptionCode.INVALID_REQUEST.value()), HttpStatus.BAD_REQUEST);

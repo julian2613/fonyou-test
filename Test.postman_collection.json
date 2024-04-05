@@ -1,0 +1,170 @@
+{
+	"info": {
+		"_postman_id": "2850a5e5-cc07-4577-b12e-1ad82eeccd6c",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3461632",
+		"_collection_link": "https://cloudy-meadow-897684.postman.co/workspace/Test~c95ecdea-40f2-4465-8b1e-5973b26e8e29/collection/3461632-2850a5e5-cc07-4577-b12e-1ad82eeccd6c?action=share&source=collection_link&creator=3461632"
+	},
+	"item": [
+		{
+			"name": "quiz",
+			"item": [
+				{
+					"name": "quiz",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ciclo 1\",\r\n    \"questions\": [\r\n        {\r\n            \"description\": \"¿Que fue primero, el huevo o la gallina\",\r\n            \"value\": 100,\r\n            \"answers\": [\r\n                {\r\n                    \"description\": \"El huevo\",\r\n                    \"isCorrect\": true\r\n                },\r\n                {\r\n                    \"description\": \"La gallina\",\r\n                    \"isCorrect\": false\r\n                },\r\n                {\r\n                    \"description\": \"Ambos\",\r\n                    \"isCorrect\": false\r\n                },\r\n                {\r\n                    \"description\": \"Ninguno\",\r\n                    \"isCorrect\": false\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/quiz",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"quiz"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "student",
+			"item": [
+				{
+					"name": "student",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Luisa fernanda\",\r\n    \"birthdate\": \"1998-02-02\",\r\n    \"city\": \"Brasilia\",\r\n    \"timezone\": \"America/Boa_Vista\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/student",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "exam",
+			"item": [
+				{
+					"name": "exam",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"presentationDate\": \"2014-04-04T12:00:00\",\r\n    \"timezone\": \"America/Bogota\",\r\n    \"quiz\": {\r\n        \"id\": \"caf4e147-c3c4-4924-96ba-05ab9d709861\"\r\n    },\r\n    \"students\": [\r\n        {\r\n            \"id\": \"13ebb088-0541-454d-b5a3-c3e9ed7602d3\"\r\n        },\r\n        {\r\n            \"id\": \"a33c5c9b-4259-417d-b68d-5cd290cac9c7\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/exam",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"exam"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "exam/findByStudent/:STUDENT_ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/exam/findByStudent/:STUDENT_ID",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"exam",
+								"findByStudent",
+								":STUDENT_ID"
+							],
+							"variable": [
+								{
+									"key": "STUDENT_ID",
+									"value": "a33c5c9b-4259-417d-b68d-5cd290cac9c7"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "exam-answer",
+			"item": [
+				{
+					"name": "exam-answer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quiz\": {\r\n        \"id\": \"66a93c38-79ad-4058-8ca1-c7c2ebc3d689\"\r\n    },\r\n    \"student\": {\r\n        \"id\": \"a33c5c9b-4259-417d-b68d-5cd290cac9c7\"\r\n    },\r\n    \"answers\": [\r\n        {\r\n            \"questionId\": \"3a89c679-2049-4298-af2c-8a2d7408712d\",\r\n            \"answerId\": \"9bed60ca-9bd2-4018-af60-244ea6f75afe\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/exam-answer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"exam-answer"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
